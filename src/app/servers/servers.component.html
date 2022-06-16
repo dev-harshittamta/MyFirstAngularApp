@@ -1,7 +1,5 @@
 <p>Hello World</p>
-<app-server></app-server>
-<p>Hello World</p>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
 
 <label>Server Name</label>
 <!-- event binding  -->
@@ -38,4 +36,23 @@
 </button>
 <div class="container">
   {{ userName }}
+</div>
+
+<br />
+<button class="btn btn-secondary" (click)="togglePass = !togglePass">
+  Toggle Pass
+</button>
+<div *ngIf="togglePass">Password = <span class="secondary">@123#</span></div>
+
+<br />
+<button class="btn btn-secondary" (click)="dynamicList()">
+  Add dynamicList
+</button>
+<div
+  class="container"
+  *ngFor="let t of counter; let i = index"
+  [ngStyle]="{ 'background-color': t % 2 == 0 ? 'red' : 'darkblue' }"
+  [ngClass]="{ 'white-text': true }"
+>
+  index:{{ i }}:: count:{{ t }}
 </div>

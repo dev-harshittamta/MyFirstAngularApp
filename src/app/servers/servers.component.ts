@@ -9,11 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./servers.component.css'],
 })
 export class ServersComponent implements OnInit {
+  togglePass:boolean = true;
   userName: string = '';
   allowNewServer = false;
   serverCreationStatus = 'No Server was created!';
   serverName: string = '';
   serverCreated = false;
+  servers = ['Testserver', 'Testserver 2'];
+  counter = [];
+  count = 0;
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
@@ -26,13 +30,17 @@ export class ServersComponent implements OnInit {
     this.serverCreated = true;
     this.serverCreationStatus =
       'Server was created, ' + ' the server is' + this.serverName + '!';
-    setTimeout(() => {
-      this.serverCreated = false;
-    }, 4000);
+    this.servers.push(this.serverName);
+    
   }
   // onUpdateServerName(event: any) {
   //   this.serverName = (<HTMLInputElement>event.target).value;
   resetUser() {
     this.userName = '';
+  }
+
+  dynamicList(){
+      this.count = this.count + 1;
+      this.counter.push(this.count);
   }
 }
